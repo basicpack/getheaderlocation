@@ -7,7 +7,8 @@ function getHeaderLocation($url){
         $header=get_headers($url,true);
     }
     if(isset($headers['Location'])){
-        return $header['Location'];
+        $url=$header['Location'];
+        return getHeaderLocation($url);
     }else{
         return $url;
     }
